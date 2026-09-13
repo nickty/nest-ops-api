@@ -10,6 +10,11 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
   app.enableShutdownHooks(); // graceful shutdown for ECS
 
+  app.enableCors({
+    origin: 'http://localhost:5173', // Vite's default dev server port
+    credentials: true,
+  });
+
   const port = parseInt(process.env.PORT || '3000');
   await app.listen(port);
 
