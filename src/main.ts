@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Logger, ValidationPipe } from '@nestjs/common';
+import { startCluster } from './cluster';
 
 async function bootstrap() {
   const bootStart = process.hrtime.bigint();
@@ -15,4 +16,4 @@ async function bootstrap() {
   const bootMs = Number(process.hrtime.bigint() - bootStart) / 1_000_000;
   Logger.log(`🚀 App loaded in ${bootMs.toFixed(2)}ms on port ${port} (pid ${process.pid})`, 'Bootstrap');
 }
-bootstrap();
+startCluster(bootstrap);
