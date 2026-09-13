@@ -5,7 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductsModule } from './products/products.module';
 import { MetricsModule } from './metrics/metrics.module';
-// import { HealthModule } from './health/health.module';
+import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
@@ -28,7 +28,7 @@ import { MetricsModule } from './metrics/metrics.module';
     }),
     ProductsModule,
     MetricsModule,
-    // HealthModule,
+    HealthModule,
   ],
   // controllers: [AppController],
   // providers: [AppService],
