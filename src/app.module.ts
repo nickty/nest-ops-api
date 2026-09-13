@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductsModule } from './products/products.module';
-// import { MetricsModule } from './metrics/metrics.module';
+import { MetricsModule } from './metrics/metrics.module';
 // import { HealthModule } from './health/health.module';
 
 @Module({
@@ -27,7 +27,7 @@ import { ProductsModule } from './products/products.module';
       }
     }),
     ProductsModule,
-    // MetricsModule,
+    MetricsModule,
     // HealthModule,
   ],
   // controllers: [AppController],

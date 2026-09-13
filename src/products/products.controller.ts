@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, Param, Query, Res } from '@nestjs/common';
-import { Response } from 'express';
+import type { Response } from 'express';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 
@@ -15,6 +15,15 @@ export class ProductsController {
   @Get()
   findAll(@Query('page') page = '1', @Query('limit') limit = '20') {
     return this.productsService.findAll(parseInt(page), parseInt(limit));
+  }
+
+  @Get('export/csv')
+  async exportCsv(@Res() res: Response) {
+    res.setHeader('Content-Type', 'text/csv');
+    res.setHeader('Content-Disposition', 'attachment; filename="products.csv"');
+
+    // This calls the streaming service method
+    await this.productsService.streamCsvToResponse(res);
   }
 
   @Get(':id')
