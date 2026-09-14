@@ -11,7 +11,7 @@ async function bootstrap() {
   app.enableShutdownHooks(); // graceful shutdown for ECS
 
   app.enableCors({
-    origin: 'http://localhost:5173', // Vite's default dev server port
+    origin: 'http://localhost:5173', // Vite's default dev server port sdf
     credentials: true,
   });
 
